@@ -1,0 +1,12 @@
+#step 1 
+sudo: required
+#install docker to our container
+services:
+  - docker
+
+before_install:
+  - docker build -t partidaa/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true partidaa/docker-react npm run test
+
